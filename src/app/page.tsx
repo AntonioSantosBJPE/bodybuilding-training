@@ -1,3 +1,9 @@
+import { ModeToggle } from '@/components/theme-toogle'
+
 export default function Home() {
-	return <div></div>
+	return (
+		<section>
+			<ModeToggle />
+		</section>
+	)
 }
