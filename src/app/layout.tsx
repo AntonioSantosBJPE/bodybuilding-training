@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
+import { GlobalProvider } from '@/providers/global.provider'
 
 const geistSans = localFont({
 	src: './fonts/GeistVF.woff',
@@ -24,11 +25,14 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
+		// Ficar atento com o atributo suppressHydrationWarning que pode mascarar erros de hydration no futuro
+		<html lang="en" suppressHydrationWarning>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				{children}
+				<main>
+					<GlobalProvider>{children}</GlobalProvider>
+				</main>
 			</body>
 		</html>
 	)
