@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -10,6 +12,7 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { ROUTES } from '@/constants/routes'
 
 export default function LoginForm() {
 	return (
@@ -43,7 +46,16 @@ export default function LoginForm() {
 					<Button type="submit" className="w-full">
 						Login
 					</Button>
-					<Button variant="outline" className="w-full">
+					<Button
+						variant="outline"
+						className="w-full"
+						onClick={() =>
+							signIn('google', {
+								redirect: true,
+								redirectTo: ROUTES.DASHBOARD.DEFAULT,
+							})
+						}
+					>
 						Login with Google
 					</Button>
 				</div>
