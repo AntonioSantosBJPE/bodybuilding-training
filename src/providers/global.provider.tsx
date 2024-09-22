@@ -3,6 +3,7 @@
 import { PropsWithChildren } from 'react'
 import { ThemeProvider } from './theme.provider'
 import { LOCAL_STORAGE_KEYS } from '@/constants/storage-keys'
+import { QueryProvider } from './query.provider'
 
 export const GlobalProvider = ({ children }: PropsWithChildren) => {
 	return (
@@ -13,7 +14,7 @@ export const GlobalProvider = ({ children }: PropsWithChildren) => {
 			disableTransitionOnChange
 			storageKey={LOCAL_STORAGE_KEYS.THEME}
 		>
-			{children}
+			<QueryProvider>{children}</QueryProvider>
 		</ThemeProvider>
 	)
 }
